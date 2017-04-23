@@ -1,0 +1,41 @@
+/*.loginContainer {*/
+/*background-color: white;*/
+/*position: relative;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*margin: 0 auto;*/
+/*}*/
+
+.top {
+    height: 200px;
+}
+
+.loginContainer {
+}
+
+.loginBox {
+    /*height: 380px;*/
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.loginBox .loginTop {
+    height: 80px;
+    background: lightgrey;
+    line-height: 80px;
+    font-size: 25px;
+    border-radius: 5px 5px 0 0;
+}
+
+.loginBox .loginMiddle {
+    padding: 40px 30px 40px 30px;
+}
+
+.loginBox .loginBottom {
+    height: 60px;
+    background: lightgrey;
+    bottom: 0px;
+    padding-top: 13px;
+    border-radius: 0 0 5px 5px;
+}

@@ -15,6 +15,7 @@ public class StaticResourceConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/js/**").addResourceLocations("classpath:/WEB-INF/js/");
         registry.addResourceHandler("/css/**").addResourceLocations("classpath:/WEB-INF/css/");
         registry.addResourceHandler("/plugins/**").addResourceLocations("classpath:/WEB-INF/plugins/");
+        registry.addResourceHandler("/images/**").addResourceLocations("classpath:/WEB-INF/images/");
     }
 
 }

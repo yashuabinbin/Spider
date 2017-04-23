@@ -44,6 +44,11 @@ public class LoginFilter implements Filter {
         this.add(".mp3");
         this.add(".xls");
         this.add(".tar");
+        this.add(".ttf");
+        this.add(".eot");
+        this.add(".svg");
+        this.add(".woff");
+        this.add(".woff2");
         this.add(".pdf");
         this.add(".jpeg");
         this.add(".doc");
@@ -72,7 +77,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String visitUrl = request.getRequestURI();
-        logger.info("visit url: {}", visitUrl);
+        logger.debug("visit url: {}", visitUrl);
 
         /**
          * 检测是否是静态资源或者是访问login登录界面
