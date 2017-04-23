@@ -129,3 +129,7 @@ querydsl/
 
 .DS_Store
 
+mvnw
+mvnw.cmd
+*.log
+log/
