@@ -1,11 +1,13 @@
 package com.example.controller;
 
-import com.example.service.UserService;
+import com.example.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by lbb on 2017/4/23.
@@ -15,18 +17,19 @@ public class IndexController {
 
     Logger logger = LoggerFactory.getLogger(IndexController.class);
 
-    @Autowired
-    private UserService userService;
-
 
     /**
      * 跳转登陆界面
      *
      * @return
      */
-    @GetMapping(value = "/login")
-    public String login() {
-        return "login";
+    @GetMapping(value = {"/", "/login"})
+    public String login(HttpServletRequest request) {
+        if (User.getLoginedUser(request) != null) {
+            return "redirect:index";
+        } else {
+            return "login";
+        }
     }
 
 
@@ -35,9 +38,8 @@ public class IndexController {
      *
      * @return
      */
-    @GetMapping(value = {"/"})
-    public String index() {
+    @GetMapping(value = "index")
+    public String index(HttpSession session) {
         return "index";
     }
-
 }

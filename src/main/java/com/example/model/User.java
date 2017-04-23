@@ -1,7 +1,9 @@
 package com.example.model;
 
+import com.example.utils.Constant;
 import org.apache.ibatis.type.Alias;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Alias(value = "User")
@@ -88,5 +90,16 @@ public class User {
                 ", sex=" + sex +
                 ", createTime=" + createTime +
                 '}';
+    }
+
+
+    /**
+     * 从Session中获取已经登录的用户信息
+     *
+     * @param request
+     * @return
+     */
+    public static User getLoginedUser(HttpServletRequest request) {
+        return (User) request.getSession().getAttribute(Constant.LOGINED_USER);
     }
 }
