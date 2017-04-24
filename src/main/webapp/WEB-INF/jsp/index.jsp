@@ -7,6 +7,9 @@
     <title>Title</title>
 </head>
 <body>
-1111111111111111111111
+
+index.jsp
+
+<%@ include file="common/footer.jsp" %>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
     <%@ include file="common/header.jsp" %>
     <title>login</title>
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css?version=${version}"/>
 </head>
 
 <body>
@@ -42,20 +42,7 @@
         </div>
     </div>
 </div>
+<%@ include file="common/footer.jsp" %>
+<script type="text/javascript" src="<%=basePath%>js/login.js?version=${version}"></script>
 </body>
-
-<script type="text/javascript">
-    var ve = new Vue({
-        el: '.loginContainer',
-        data: {
-            username: '',
-            password: ''
-        },
-        methods: {
-            loginSubmit: function () {
-                alert("login submit");
-            }
-        }
-    });
-</script>
 </html>

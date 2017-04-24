@@ -77,7 +77,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String visitUrl = request.getRequestURI();
-        logger.debug("visit url: {}", visitUrl);
+        logger.info("visit url: {}", visitUrl);
 
         /**
          * 检测是否是静态资源或者是访问login登录界面

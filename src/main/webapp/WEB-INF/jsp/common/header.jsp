@@ -9,13 +9,13 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href='<%=basePath%>css/global.css'/>
-<link rel="stylesheet" type="text/css" href='<%=basePath%>plugins/bootstrap/css/bootstrap.min.css'/>
-<script type="text/javascript" src='<%=basePath%>plugins/jquery-3.1.1.min.js'></script>
-<script type="text/javascript" src='<%=basePath%>plugins/bootstrap/js/tether.min.js'></script>
-<script type="text/javascript" src='<%=basePath%>plugins/bootstrap/js/bootstrap.min.js'></script>
-<script type="text/javascript" src='<%=basePath%>plugins/vue.js'></script>
-<script type="text/javascript" src='<%=basePath%>js/common/global.js'></script>
+<link rel="stylesheet" type="text/css" href='<%=basePath%>css/global.css?version=${version}'/>
+<link rel="stylesheet" type="text/css" href='<%=basePath%>plugins/bootstrap/css/bootstrap.min.css?version=${version}'/>
+<script type="text/javascript" src='<%=basePath%>plugins/jquery-3.1.1.min.js?version=${version}'></script>
+<script type="text/javascript" src='<%=basePath%>plugins/bootstrap/js/tether.min.js?version=${version}'></script>
+<script type="text/javascript" src='<%=basePath%>plugins/bootstrap/js/bootstrap.min.js?version=${version}'></script>
+<script type="text/javascript" src='<%=basePath%>plugins/vue.js?version=${version}'></script>
+<script type="text/javascript" src='<%=basePath%>js/common/global.js?version=${version}'></script>
 <script type="text/javascript">
-    var basePath = <%=basePath%>;
+    var basePath = '<%=basePath%>';
 </script>
