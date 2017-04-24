@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="common/header.jsp" %>
-<title>login</title>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <%@ include file="common/header.jsp" %>
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css"/>
 </head>
 
 <body>
