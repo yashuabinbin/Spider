@@ -8,7 +8,11 @@
 </head>
 <body>
 
-index.jsp
+<ul>
+    <li>
+        <a href="<%=basePath%>echart/">echart</a>
+    </li>
+</ul>
 
 <%@ include file="common/footer.jsp" %>
 </body>

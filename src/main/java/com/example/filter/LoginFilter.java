@@ -102,7 +102,7 @@ public class LoginFilter implements Filter {
         } else {
             //普通请求
             if (User.getLoginedUser(request) == null) {
-                response.sendRedirect("login");
+                response.sendRedirect("/spider/login");
                 return;
             }
         }
