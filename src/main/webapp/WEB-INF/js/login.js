@@ -6,7 +6,33 @@ var ve = new Vue({
     },
     methods: {
         loginSubmit: function () {
-            alert(basePath);
+            $.ajax({
+                type: 'POST',
+                url: basePath + '/checkLogin',
+                dataType: 'json',
+                data: {
+                    username: this.username,
+                    password: this.password
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                },
+                success: function (data) {
+                    console.info(data.state);
+                    console.info(data.stateInfo);
+                    switch (data.state) {
+                        case -1:
+                        case -2:
+                            alert(data.stateInfo);
+                            return;
+                        case -3:
+                            alert(data.stateInfo);
+                            this.password = '';
+                            return;
+                        case 0:
+                            window.location.href = basePath + "index";
+                    }
+                }
+            });
         }
     }
 });

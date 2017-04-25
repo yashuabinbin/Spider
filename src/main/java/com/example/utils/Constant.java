@@ -15,4 +15,5 @@ public class Constant {
      * 未登录代号(用于返回AJAX请求)
      */
     public static final Integer NOT_LOGINED_CODE = 701;
+
 }

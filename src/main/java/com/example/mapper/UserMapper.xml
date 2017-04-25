@@ -23,6 +23,14 @@
         order by create_time asc
     </select>
 
+    <select id="selectUserByUserNameAndPassword" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sp_user
+        where username = #{username}
+        and password = #{password}
+    </select>
+
     <insert id="insert" parameterType="com.example.model.User">
       insert into sp_user (id, username, password,
         realname, email, sex, create_time)

@@ -58,15 +58,14 @@ public class LoginFilter implements Filter {
         this.add("/login");
         this.add("/login/");
         this.add("/spider/");
+        this.add("/checkLogin");
     }};
 
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         logger.info("===================================");
-        logger.info("===================================");
         logger.info("LoginFilter init!");
-        logger.info("===================================");
         logger.info("===================================");
     }
 
@@ -77,7 +76,6 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String visitUrl = request.getRequestURI();
-        logger.info("visit url: {}", visitUrl);
 
         /**
          * 检测是否是静态资源或者是访问login登录界面
@@ -92,6 +90,7 @@ public class LoginFilter implements Filter {
         }
         if (isOver) return;
 
+        logger.info("visit url: {}", visitUrl);
 
         String requestType = request.getHeader("X-Requested-With");
         if ("X-Requested-With".equals(requestType)) {
@@ -108,16 +107,14 @@ public class LoginFilter implements Filter {
             }
         }
 
-        doFilter(servletRequest, servletResponse, filterChain);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
 
     @Override
     public void destroy() {
         logger.info("===================================");
-        logger.info("===================================");
         logger.info("LoginFilter destory!");
-        logger.info("===================================");
         logger.info("===================================");
     }
 }

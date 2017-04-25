@@ -4,6 +4,7 @@ import com.example.dao.UserMapper;
 import com.example.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 
@@ -21,4 +22,23 @@ public class UserService {
         return userMapper.selectAll();
     }
 
+
+    /**
+     * 检测登录参数
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    public User checkLogin(String username, String password) {
+        //md5加密处理
+        password = DigestUtils.md5Digest(password.getBytes()).toString();
+
+        return new User() {{
+            setUsername("1");
+            setEmail("lubingbin@qq.com");
+        }};
+//        User user = userMapper.selectUserByUserNameAndPassword(username, password);
+//        return user;
+    }
 }
