@@ -27,18 +27,18 @@
     border-radius: 5px 5px 0 0;
 }
 
-.loginBox .loginMiddle, .loginBox .registerMiddle {
+.loginBox .loginMiddle {
     padding: 30px;
 }
 
-.loginBox .registerMiddle .form-control:not(:first-child) {
-    margin-top: 20px;
+.loginBox .registerMiddle {
+    padding: 0px 30px 30px 30px;
 }
 
-/*.loginBox .registerMiddle .form-control {*/
-/*padding: 10px 16px;*/
-/*height: auto;*/
-/*}*/
+.loginBox .registerMiddle .form-control:not(:first-child) {
+    margin-top: 18px;
+}
+
 
 .loginBox .loginBottom {
     height: 100px;
