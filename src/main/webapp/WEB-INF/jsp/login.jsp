@@ -8,18 +8,18 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css?version=${version}"/>
 </head>
 
-<body>
+<body class="loginBody">
 <div class="container">
     <div class="top">
     </div>
     <div class="row loginContainer">
-        <div class="col-md-offset-4 col-md-4 loginBox">
+        <div class="col-md-offset-4 col-md-5 loginBox">
             <form id="loginForm">
                 <div class="text-center loginTop">
-                    用 户 登 陆
+                    SIGN IN
                 </div>
                 <div class="loginMiddle">
-                    <div class="input-group">
+                    <div class="input-group input-group-lg">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-user"></span>
                         </span>
@@ -27,7 +27,7 @@
                                placeholder="username...">
                     </div>
 
-                    <div class="input-group mt30">
+                    <div class="input-group input-group-lg mt20">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-lock"></span>
                         </span>
@@ -36,7 +36,10 @@
                     </div>
                 </div>
                 <div class="loginBottom text-center">
-                    <button type="button" class="btn btn-default" v-on:click="loginSubmit">登　录</button>
+                    <button type="button" class="btn btn-default btn-block btn-large" id="loginBtn" v-on:click="loginSubmit">LOGIN</button>
+                    <div class="register">
+                        Not a member yet ? <a href="<%=basePath%>user/register">Sign Up</a>
+                    </div>
                 </div>
             </form>
         </div>

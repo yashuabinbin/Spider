@@ -1,41 +1,62 @@
-/*.loginContainer {*/
-/*background-color: white;*/
-/*position: relative;*/
-/*width: 100%;*/
-/*height: 100%;*/
-/*margin: 0 auto;*/
-/*}*/
+.loginBody {
+    background: #65cea7 url(../images/login-bg.jpg) no-repeat fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
 
 .top {
-    height: 200px;
+    height: 250px;
 }
 
 .loginContainer {
 }
 
 .loginBox {
-    /*height: 380px;*/
     border: 1px solid #E0E0E0;
     border-radius: 5px;
     padding: 0px;
+    background-color: white;
 }
 
 .loginBox .loginTop {
-    height: 80px;
-    background: lightgrey;
+    height: 70px;
     line-height: 80px;
     font-size: 25px;
+    color: #929090;
     border-radius: 5px 5px 0 0;
 }
 
 .loginBox .loginMiddle {
-    padding: 40px 30px 40px 30px;
+    padding: 30px;
 }
 
 .loginBox .loginBottom {
-    height: 60px;
-    background: lightgrey;
+    height: 100px;
     bottom: 0px;
-    padding-top: 13px;
     border-radius: 0 0 5px 5px;
+    padding: 0px 30px 0px 30px;
+}
+
+.loginBox .loginBottom #loginBtn {
+    background-color: #888888;
+    padding: 9px;
+    font-weight: 100;
+    font-size: 18px;
+    color: white;
+}
+
+.loginBox .loginBottom #loginBtn:hover {
+    background-color: #615f5f;
+}
+
+.loginBox .loginBottom .register {
+    margin: 15px auto;
+    font-size: 15px;
+    color: #a9a9a9;
+}
+
+.loginBox .loginBottom .register a {
+    color: #66a0d2;
+    text-decoration: underline;
 }
