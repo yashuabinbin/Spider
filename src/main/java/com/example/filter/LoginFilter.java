@@ -59,6 +59,7 @@ public class LoginFilter implements Filter {
         this.add("/login/");
         this.add("/spider/");
         this.add("/checkLogin");
+        this.add("/register");
     }};
 
 

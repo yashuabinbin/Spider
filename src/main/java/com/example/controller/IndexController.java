@@ -31,7 +31,7 @@ public class IndexController {
 
 
     /**
-     * 跳转登陆界面
+     * 跳转登陆界v面
      *
      * @return
      */
@@ -85,5 +85,16 @@ public class IndexController {
     @GetMapping(value = "/index")
     public String index() {
         return "index";
+    }
+
+
+    /**
+     * 跳转register页面
+     *
+     * @return
+     */
+    @GetMapping(value = "/register")
+    public String register() {
+        return "register";
     }
 }

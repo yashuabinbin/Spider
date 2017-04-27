@@ -17,8 +17,6 @@ var ve = new Vue({
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 },
                 success: function (data) {
-                    console.info(data.state);
-                    console.info(data.stateInfo);
                     switch (data.state) {
                         case -1:
                         case -2:

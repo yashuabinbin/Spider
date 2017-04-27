@@ -38,7 +38,7 @@
                 <div class="loginBottom text-center">
                     <button type="button" class="btn btn-default btn-block btn-large" id="loginBtn" v-on:click="loginSubmit">LOGIN</button>
                     <div class="register">
-                        Not a member yet ? <a href="<%=basePath%>user/register">Sign Up</a>
+                        Not a member yet ? <a href="<%=basePath%>register">Sign Up</a>
                     </div>
                 </div>
             </form>
