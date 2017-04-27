@@ -32,13 +32,8 @@ public class UserService {
      */
     public User checkLogin(String username, String password) {
         //md5加密处理
-        password = DigestUtils.md5Digest(password.getBytes()).toString();
-
-        return new User() {{
-            setUsername("1");
-            setEmail("lubingbin@qq.com");
-        }};
-//        User user = userMapper.selectUserByUserNameAndPassword(username, password);
-//        return user;
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        User user = userMapper.selectUserByUserNameAndPassword(username, password);
+        return user;
     }
 }
