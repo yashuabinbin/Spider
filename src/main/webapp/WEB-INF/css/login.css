@@ -9,9 +9,6 @@
     height: 250px;
 }
 
-.loginContainer {
-}
-
 .loginBox {
     border: 1px solid #E0E0E0;
     border-radius: 5px;
@@ -35,10 +32,10 @@
     padding: 0px 30px 30px 30px;
 }
 
-.loginBox .registerMiddle .form-control:not(:first-child) {
-    margin-top: 18px;
+.loginBox .registerMiddle .form-control {
+    margin-top: 15px;
+    height: 45px;
 }
-
 
 .loginBox .loginBottom {
     height: 100px;
@@ -47,7 +44,7 @@
     padding: 0px 30px 0px 30px;
 }
 
-.loginBox .loginBottom #loginBtn {
+.loginBox .loginBottom #loginBtn, .loginBox .loginBottom #registerBtn {
     background-color: #888888;
     padding: 9px;
     font-weight: 100;
@@ -55,18 +52,21 @@
     color: white;
 }
 
-.loginBox .loginBottom #loginBtn:hover {
+.loginBox .loginBottom #loginBtn:hover, .loginBox .loginBottom #registerBtn:hover {
     background-color: #615f5f;
 }
 
-.loginBox .loginBottom .register {
+.loginBox .loginBottom .link {
     margin: 15px auto;
     font-size: 15px;
     color: #a9a9a9;
 }
 
-.loginBox .loginBottom .register a {
+.loginBox .loginBottom .link a {
     color: #66a0d2;
     text-decoration: underline;
 }
 
+.popover {
+    min-width: 150px;
+}
