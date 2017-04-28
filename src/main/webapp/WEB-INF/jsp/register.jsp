@@ -22,22 +22,22 @@
                 <div class="registerMiddle">
 
                     <%--用户名--%>
-                    <div v-bind:class="{'has-error':invalid.username}">
+                    <div v-bind:class="{'has-error':invalid.username.val}">
                         <input type="text" id="username" name="username" class="form-control" v-model="username" placeholder="username"/>
                     </div>
 
                     <%--姓名--%>
-                    <div v-bind:class="{'has-error':invalid.realname}">
+                    <div v-bind:class="{'has-error':invalid.realname.val}">
                         <input type="text" id="realname" name="realname" class="form-control" v-model="realname" placeholder="realname"/>
                     </div>
 
                     <%--邮箱--%>
-                    <div v-bind:class="{'has-error':invalid.email}">
+                    <div v-bind:class="{'has-error':invalid.email.val}">
                         <input type="text" id="email" name="email" class="form-control" v-model="email" placeholder="email"/>
                     </div>
 
                     <%--密码--%>
-                    <div v-bind:class="{'has-error':invalid.password}">
+                    <div v-bind:class="{'has-error':invalid.password.val}">
                         <input type="password" id="password" name="password" class="form-control" v-model="password" placeholder="password"/>
                     </div>
                 </div>

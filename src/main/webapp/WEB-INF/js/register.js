@@ -7,10 +7,10 @@ var ve = new Vue({
         email: '',
 
         invalid: {
-            username: false,
-            password: false,
-            realname: false,
-            email: false
+            username: {val: false},
+            password: {val: false},
+            realname: {val: false},
+            email: {val: false}
         },
 
         reg: {
@@ -42,20 +42,19 @@ var ve = new Vue({
     methods: {
         //弹出提示框
         showErrorMsg: function (obj, content, invalid) {
-            invalid = true;
+            invalid.val = true;
 
             obj.popover({
-                trigger: 'focus',
+                trigger: 'manual',
                 title: 'notice',
                 placement: 'right',
                 content: content
             });
-            obj.popover('show')
-                .on('focus', function () {
-                    if (!invalid) {
-                        $(this).popover('hide');
-                    }
-                });
+            obj.popover('show');
+
+            obj.unbind().bind('focus', function () {
+                obj.popover('destroy');
+            });
         },
 
         validItem: function (category, val) {
@@ -91,7 +90,6 @@ var ve = new Vue({
                     break;
             }
 
-            console.info(val + ' ' + (!reg.test(val) ? 'YES' : 'NO'));
             if (!val) {
                 this.showErrorMsg(obj, error_msg.is_null, invalid);
                 return false;
@@ -102,7 +100,7 @@ var ve = new Vue({
                 return false;
             }
 
-            invalid = false;
+            invalid.val = false;
             return true;
         },
 
@@ -114,7 +112,11 @@ var ve = new Vue({
             if (!this.validItem('password', this.password)) return;
         }
     },
-    created: function () {
+    watch: {
+        'invalid.username': function (newVal, oldVal) {
+            console.info('newVal: ' + newVal + ' oldVal: ' + oldVal);
+        }
     }
 });
+
 
