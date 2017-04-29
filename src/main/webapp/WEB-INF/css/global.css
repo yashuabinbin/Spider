@@ -16,3 +16,7 @@ html, body {
 .mt30 {
     margin-top: 30px;
 }
+
+.crp {
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.AjaxResult;
+import com.example.dto.CommonResult;
 import com.example.enums.CommonEnum;
 import com.example.model.User;
 import com.example.service.UserService;
@@ -55,24 +55,23 @@ public class IndexController {
      */
     @PostMapping(value = "/checkLogin")
     @ResponseBody
-    public AjaxResult checkLogin(@RequestParam(value = "username", required = true) String username,
-                                 @RequestParam(value = "password", required = true) String password,
-                                 HttpSession session) {
+    public CommonResult checkLogin(@RequestParam(value = "username", required = true) String username,
+                                   @RequestParam(value = "password", required = true) String password,
+                                   HttpSession session) {
         if (StringUtils.isEmpty(username)) {
-            return new AjaxResult(CommonEnum.Login_UserName_Null);
+            return new CommonResult(CommonEnum.Login_UserName_Null);
         }
 
         if (StringUtils.isEmpty(password)) {
-            return new AjaxResult(CommonEnum.Login_Password_Null);
+            return new CommonResult(CommonEnum.Login_Password_Null);
         }
 
         User user = userService.checkLogin(username, password);
         if (user != null) {
             session.setAttribute(Constant.LOGINED_USER, user);
-            logger.info("loginUser:{}", user);
-            return new AjaxResult(CommonEnum.Login_Success);
+            return new CommonResult(CommonEnum.Common_Success);
         } else {
-            return new AjaxResult(CommonEnum.Login_UserNameOrPassword_Error);
+            return new CommonResult(CommonEnum.Login_UserNameOrPassword_Error);
         }
     }
 

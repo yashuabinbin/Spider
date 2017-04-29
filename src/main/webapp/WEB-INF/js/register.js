@@ -40,6 +40,11 @@ var ve = new Vue({
         }
     },
     methods: {
+        showPwd: function () {
+            var type = $('#password').attr('type');
+            $('#password').attr('type', type == 'password' ? 'text' : 'password');
+        },
+
         //弹出提示框
         showErrorMsg: function (obj, content, invalid) {
             invalid.val = true;
@@ -110,6 +115,17 @@ var ve = new Vue({
             if (!this.validItem('realname', this.realname)) return;
             if (!this.validItem('email', this.email)) return;
             if (!this.validItem('password', this.password)) return;
+
+            $.post(basePath + 'user/register', $('#registerForm').serialize(), function (result) {
+                switch (result.state) {
+                    case -4:
+                        alert(result.stateInfo);
+                        break;
+                    case 0 :
+                        window.location.href = basePath + 'index';
+                        break;
+                }
+            });
         }
     },
     watch: {

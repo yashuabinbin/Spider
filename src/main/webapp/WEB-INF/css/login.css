@@ -32,8 +32,11 @@
     padding: 0px 30px 30px 30px;
 }
 
-.loginBox .registerMiddle .form-control {
+.loginBox .registerMiddle div {
     margin-top: 15px;
+}
+
+.loginBox .registerMiddle .form-control {
     height: 45px;
 }
 

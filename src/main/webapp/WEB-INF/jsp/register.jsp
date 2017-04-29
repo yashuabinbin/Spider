@@ -15,7 +15,7 @@
         <div class="col-md-offset-4 col-md-5 loginBox">
 
             <%--注册表单验证--%>
-            <form id="registerForm" novalidate>
+            <form id="registerForm">
                 <div class="text-center loginTop">
                     REGISTER
                 </div>
@@ -23,26 +23,34 @@
 
                     <%--用户名--%>
                     <div v-bind:class="{'has-error':invalid.username.val}">
-                        <input type="text" id="username" name="username" class="form-control" v-model="username" placeholder="username"/>
+                        <input type="text" id="username" name="username" class="form-control" v-model="username"
+                               placeholder="username"/>
                     </div>
 
                     <%--姓名--%>
                     <div v-bind:class="{'has-error':invalid.realname.val}">
-                        <input type="text" id="realname" name="realname" class="form-control" v-model="realname" placeholder="realname"/>
+                        <input type="text" id="realname" name="realname" class="form-control" v-model="realname"
+                               placeholder="realname"/>
                     </div>
 
                     <%--邮箱--%>
                     <div v-bind:class="{'has-error':invalid.email.val}">
-                        <input type="text" id="email" name="email" class="form-control" v-model="email" placeholder="email"/>
+                        <input type="text" id="email" name="email" class="form-control" v-model="email"
+                               placeholder="email"/>
                     </div>
 
                     <%--密码--%>
-                    <div v-bind:class="{'has-error':invalid.password.val}">
-                        <input type="password" id="password" name="password" class="form-control" v-model="password" placeholder="password"/>
+                    <div class="input-group" v-bind:class="{'has-error':invalid.password.val}">
+                        <input type="password" id="password" name="password" class="form-control" v-model="password"
+                               placeholder="password"/>
+                        <span class="input-group-addon crp" v-on:click="showPwd">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </span>
                     </div>
                 </div>
                 <div class="loginBottom text-center">
-                    <button type="button" class="btn btn-default btn-block btn-large" id="registerBtn" v-on:click="registerSubmit">REGISTER
+                    <button type="button" class="btn btn-default btn-block btn-large" id="registerBtn"
+                            v-on:click="registerSubmit">REGISTER
                     </button>
                     <div class="link">
                         Already Has An Account ? <a href="<%=basePath%>login">Login</a>

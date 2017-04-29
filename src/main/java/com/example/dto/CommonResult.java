@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by lbb on 2017/4/25.
  */
-public class AjaxResult {
+public class CommonResult {
 
     private int state;
 
@@ -16,22 +16,22 @@ public class AjaxResult {
 
     private Map<String, Object> returnData = new HashMap<>();
 
-    public AjaxResult() {
+    public CommonResult() {
 
     }
 
-    public AjaxResult(int state, String stateInfo, Map<String, Object> returnData) {
+    public CommonResult(int state, String stateInfo, Map<String, Object> returnData) {
         this.state = state;
         this.stateInfo = stateInfo;
         this.returnData = returnData;
     }
 
-    public AjaxResult(int state, String stateInfo) {
+    public CommonResult(int state, String stateInfo) {
         this.state = state;
         this.stateInfo = stateInfo;
     }
 
-    public AjaxResult(CommonEnum commonEnum) {
+    public CommonResult(CommonEnum commonEnum) {
         this.state = commonEnum.getState();
         this.stateInfo = commonEnum.getStateInfo();
     }
@@ -43,7 +43,7 @@ public class AjaxResult {
      * @param name
      * @param data
      */
-    public AjaxResult putData(String name, Object data) {
+    public CommonResult putData(String name, Object data) {
         this.returnData.put(name, data);
         return this;
     }

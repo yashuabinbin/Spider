@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.AjaxResult;
+import com.example.dto.CommonResult;
 import com.example.enums.CommonEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +33,7 @@ public class EchartController {
      */
     @PostMapping(value = "/getData")
     @ResponseBody
-    public AjaxResult getData() throws InterruptedException {
+    public CommonResult getData() throws InterruptedException {
         Random rand = new Random();
         List<String> nameList = new ArrayList<String>() {{
             for (int i = 0; i < 20; i++) {
@@ -47,7 +47,7 @@ public class EchartController {
             }
         }};
 
-        AjaxResult result = new AjaxResult(CommonEnum.Common_Success);
+        CommonResult result = new CommonResult(CommonEnum.Common_Success);
         result.putData("names", nameList)
                 .putData("data", dataList);
         return result;

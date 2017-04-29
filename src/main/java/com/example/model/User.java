@@ -19,7 +19,7 @@ public class User {
 
     private String email;
 
-    private Byte sex;
+    private Integer sex;
 
     private Date createTime;
 
@@ -63,11 +63,11 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public Byte getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(Byte sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 

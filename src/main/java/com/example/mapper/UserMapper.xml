@@ -29,13 +29,21 @@
         from sp_user
         where username = #{username}
         and password = #{password}
+        limit 1
     </select>
 
-    <insert id="insert" parameterType="com.example.model.User">
+    <select id="selectUserByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sp_user
+        where username = #{username}
+        limit 1
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.model.User" keyProperty="id" useGeneratedKeys="true">
       insert into sp_user (id, username, password,
-        realname, email, sex, create_time)
+        realname, email, sex)
       values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-        #{realname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT},
-        #{createTime,jdbcType=TIMESTAMP})
+        #{realname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT})
     </insert>
 </mapper>
