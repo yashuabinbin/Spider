@@ -8,10 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,14 +31,22 @@ public class UserController {
                                  @RequestParam(value = "password", required = true) String password,
                                  @RequestParam(value = "realname", required = true) String realname,
                                  @RequestParam(value = "email", required = true) String email,
+                                 @RequestParam(value = "sex", required = true) Integer sex,
                                  HttpSession session) {
         User user = new User();
         user.setUsername(username);
         user.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
         user.setEmail(email);
         user.setRealname(realname);
-        user.setSex(1);
+        user.setSex(sex);
         CommonResult result = userService.saveUser(user, session);
         return result;
+    }
+
+
+    @PostMapping(value = "/{email}/sendPwdEmail")
+    @ResponseBody
+    public CommonResult sendPwdEmail(@PathVariable(value = "email", required = true) String email) {
+        return userService.sendPwdEmail(email);
     }
 }

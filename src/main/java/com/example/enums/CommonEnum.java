@@ -12,7 +12,10 @@ public enum CommonEnum {
     Login_Password_Null(-2, "请输入密码"),
     Login_UserNameOrPassword_Error(-3, "用户名或密码错误"),
 
-    Register_UserName_Exist(-4, "用户名已存在");
+    Register_UserName_Exist(-4, "用户名已存在"),
+    Register_Email_Exist(-5, "邮箱已存在"),
+
+    Pwd_Email_NotExist(-6, "该邮箱未注册");
 
     private int state;
 

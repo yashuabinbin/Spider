@@ -5,19 +5,15 @@ var ve = new Vue({
         password: '',
         realname: '',
         email: '',
+        sex: '1',
+
+        eye: 'glyphicon-eye-open',
 
         invalid: {
             username: {val: false},
             password: {val: false},
             realname: {val: false},
             email: {val: false}
-        },
-
-        reg: {
-            username: /[a-zA-Z0-9]{3,16}/,
-            password: /[a-zA-Z0-9]{5,16}/,
-            email: /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/,
-            realname: /[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*/
         },
 
         error_msg: {
@@ -42,7 +38,14 @@ var ve = new Vue({
     methods: {
         showPwd: function () {
             var type = $('#password').attr('type');
-            $('#password').attr('type', type == 'password' ? 'text' : 'password');
+            if (type == 'password') {
+                this.eye = 'glyphicon-eye-close';
+                $('#password').attr('type', 'text');
+            } else {
+                this.eye = 'glyphicon-eye-open';
+                $('#password').attr('type', 'password');
+            }
+
         },
 
         //弹出提示框
@@ -73,25 +76,25 @@ var ve = new Vue({
                     obj = $('#username');
                     invalid = this.invalid.username;
                     error_msg = this.error_msg.username;
-                    reg = this.reg.username;
+                    reg = globalV.reg.username;
                     break;
                 case 'password':
                     obj = $('#password');
                     invalid = this.invalid.password;
                     error_msg = this.error_msg.password;
-                    reg = this.reg.password;
+                    reg = globalV.reg.password;
                     break;
                 case 'realname' :
                     obj = $('#realname');
                     invalid = this.invalid.realname;
                     error_msg = this.error_msg.realname;
-                    reg = this.reg.realname;
+                    reg = globalV.reg.realname;
                     break;
                 case 'email' :
                     obj = $('#email');
                     invalid = this.invalid.email;
                     error_msg = this.error_msg.email;
-                    reg = this.reg.email;
+                    reg = globalV.reg.email;
                     break;
             }
 

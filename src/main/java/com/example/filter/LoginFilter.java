@@ -60,6 +60,8 @@ public class LoginFilter implements Filter {
         this.add("/spider/");
         this.add("/checkLogin");
         this.add("/register");
+        this.add("/forgetPwd");
+        this.add("/sendPwdEmail");
     }};
 
 

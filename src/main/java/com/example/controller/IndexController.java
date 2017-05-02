@@ -96,4 +96,13 @@ public class IndexController {
     public String register() {
         return "register";
     }
+
+
+    /**
+     * 跳转找回密码界面
+     */
+    @GetMapping(value = "/forgetPwd")
+    public String forgetPwd() {
+        return "forgetPwd";
+    }
 }

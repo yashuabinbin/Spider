@@ -10,6 +10,7 @@
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="sex" property="sex" jdbcType="TINYINT"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -40,10 +41,18 @@
         limit 1
     </select>
 
+    <select id="selectUserByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sp_user
+        where email = #{email}
+        limit 1
+    </select>
+
     <insert id="insertUser" parameterType="com.example.model.User" keyProperty="id" useGeneratedKeys="true">
       insert into sp_user (id, username, password,
-        realname, email, sex)
+        realname, email, sex, update_time)
       values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-        #{realname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT})
+        #{realname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{updateTime,jdbcType=TIMESTAMP})
     </insert>
 </mapper>

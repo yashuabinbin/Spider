@@ -44,12 +44,22 @@
                         <input type="password" id="password" name="password" class="form-control" v-model="password"
                                placeholder="password"/>
                         <span class="input-group-addon crp" v-on:click="showPwd">
-                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="glyphicon" v-bind:class="eye"></span>
                         </span>
                     </div>
+
+                        <%--性别--%>
+                        <div class="row sexDiv">
+                        <span class="col-md-3">
+                            <input type="radio" class="ml5" name="sex" v-model="sex" value="1"> Male
+                        </span>
+                        <span class="col-md-9">
+                            <input type="radio" name="sex" v-model="sex" value="0"> Female
+                        </span>
+                        </div>
                 </div>
                 <div class="loginBottom text-center">
-                    <button type="button" class="btn btn-default btn-block btn-large" id="registerBtn"
+                    <button type="button" class="btn btn-default btn-block btn-large cBtn" id="registerBtn"
                             v-on:click="registerSubmit">REGISTER
                     </button>
                     <div class="link">

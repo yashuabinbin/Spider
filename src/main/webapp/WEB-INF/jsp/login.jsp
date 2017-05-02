@@ -36,9 +36,11 @@
                     </div>
                 </div>
                 <div class="loginBottom text-center">
-                    <button type="button" class="btn btn-default btn-block btn-large" id="loginBtn" v-on:click="loginSubmit">LOGIN</button>
+                    <button type="button" class="btn btn-default btn-block btn-large cBtn" id="loginBtn" v-on:click="loginSubmit">LOGIN</button>
                     <div class="link">
-                        Not a member yet ? <a href="<%=basePath%>register">Sign Up</a>
+                        <a href="<%=basePath%>register">Sign Up</a>
+                        <span>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp</span>
+                        <a href="<%=basePath%>forgetPwd">Forget Password</a>
                     </div>
                 </div>
             </form>

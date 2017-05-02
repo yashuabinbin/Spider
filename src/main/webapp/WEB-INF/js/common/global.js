@@ -24,3 +24,15 @@ $.ajaxSetup({
         }
     }
 });
+
+
+var globalV = new Vue({
+    data: {
+        reg: {
+            username: /[a-zA-Z0-9]{3,16}/,
+            password: /[a-zA-Z0-9]{5,16}/,
+            email: /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/,
+            realname: /[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*/
+        }
+    }
+});

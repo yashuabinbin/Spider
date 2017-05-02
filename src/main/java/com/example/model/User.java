@@ -23,6 +23,8 @@ public class User {
 
     private Date createTime;
 
+    private Date updateTime;
+
     public Integer getId() {
         return id;
     }
@@ -79,6 +81,14 @@ public class User {
         this.createTime = createTime;
     }
 
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -89,6 +99,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", sex=" + sex +
                 ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 
