@@ -15,7 +15,8 @@ public enum CommonEnum {
     Register_UserName_Exist(-4, "用户名已存在"),
     Register_Email_Exist(-5, "邮箱已存在"),
 
-    Pwd_Email_NotExist(-6, "该邮箱未注册");
+    Pwd_Email_NotExist(-6, "该邮箱未注册"),
+    Pwd_Email_OutDate(-7, "邮件过期");
 
     private int state;
 

@@ -83,4 +83,7 @@ public class CommonResult {
         this.returnData = returnData;
     }
 
+    public boolean isSuccess() {
+        return state == CommonEnum.Common_Success.getState();
+    }
 }

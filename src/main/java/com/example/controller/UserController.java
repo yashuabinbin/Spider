@@ -1,12 +1,14 @@
 package com.example.controller;
 
 import com.example.dto.CommonResult;
+import com.example.enums.CommonEnum;
 import com.example.model.User;
 import com.example.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,17 @@ public class UserController {
     private UserService userService;
 
 
+    /**
+     * 注册
+     *
+     * @param username
+     * @param password
+     * @param realname
+     * @param email
+     * @param sex
+     * @param session
+     * @return
+     */
     @PostMapping(value = "/register")
     @ResponseBody
     public CommonResult register(@RequestParam(value = "username", required = true) String username,
@@ -44,9 +57,37 @@ public class UserController {
     }
 
 
+    /**
+     * 发送重置密码邮件
+     * @param email
+     * @return
+     */
     @PostMapping(value = "/{email}/sendPwdEmail")
     @ResponseBody
     public CommonResult sendPwdEmail(@PathVariable(value = "email", required = true) String email) {
         return userService.sendPwdEmail(email);
+    }
+
+
+    /**
+     * 跳转重置密码页面
+     *
+     * @param email
+     * @param code
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/{email}/toResetPwd")
+    public String toResetPwd(@PathVariable(value = "email", required = true) String email,
+                             @RequestParam(value = "code", required = true) String code,
+                             Model model) {
+        CommonResult result = userService.verifyMail(email, code);
+        if (result.isSuccess()) {
+            model.addAttribute("user", result.getData("user"));
+            return "resetPwd";
+        } else {
+            model.addAttribute("errorMsg", result.getStateInfo());
+            return "error";
+        }
     }
 }

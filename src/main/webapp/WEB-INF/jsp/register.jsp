@@ -7,19 +7,19 @@
     <title>注册页面</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css?version=${version}"/>
 </head>
-<body class="loginBody">
+<body class="commonBody">
 <div class="container">
     <div class="top">
     </div>
     <div class="row registerContainer">
-        <div class="col-md-offset-4 col-md-5 loginBox">
+        <div class="col-md-offset-4 col-md-5 commonBox">
 
             <%--注册表单验证--%>
             <form id="registerForm">
-                <div class="text-center loginTop">
+                <div class="text-center commonTop">
                     REGISTER
                 </div>
-                <div class="registerMiddle">
+                <div class="commonMiddle">
 
                     <%--用户名--%>
                     <div v-bind:class="{'has-error':invalid.username.val}">
@@ -48,17 +48,17 @@
                         </span>
                     </div>
 
-                        <%--性别--%>
-                        <div class="row sexDiv">
+                    <%--性别--%>
+                    <div class="row sexDiv">
                         <span class="col-md-3">
                             <input type="radio" class="ml5" name="sex" v-model="sex" value="1"> Male
                         </span>
                         <span class="col-md-9">
                             <input type="radio" name="sex" v-model="sex" value="0"> Female
                         </span>
-                        </div>
+                    </div>
                 </div>
-                <div class="loginBottom text-center">
+                <div class="commonBottom longBottom text-center">
                     <button type="button" class="btn btn-default btn-block btn-large cBtn" id="registerBtn"
                             v-on:click="registerSubmit">REGISTER
                     </button>

@@ -11,12 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -101,7 +103,7 @@ public class UserService {
                 return new CommonResult(CommonEnum.Pwd_Email_NotExist);
             }
 
-            String url = webUrl + "/toResetPwd/" + user.getEmail() + "/" + code;
+            String url = webUrl + "/user/" + user.getEmail() + "/toResetPwd?code=" + code;
 
             //插入ps_mail表
             Mail mail = new Mail();
@@ -109,17 +111,18 @@ public class UserService {
             mail.setCode(code);
             mailMapper.insert(mail);
 
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(Sender);
-            message.setTo(email);
-            message.setSubject("Spider 找回密码");
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setFrom(Sender);
+            helper.setTo(email);
+            helper.setSubject("Spider 找回密码");
 
             //拼凑文件内容
             StringBuffer sb = new StringBuffer();
             sb.append("本邮件用于密码的找回，请勿回复<br/>");
-            sb.append("<a href=\"" + url + "\">点击我进入重设密码页面</a>");
+            sb.append("<a href=\"" + url + "\">点击我进入重设密码页面</a><br/>");
             sb.append("本邮件超过30分钟，链接将会失效，需要重新申请！");
-            message.setText(sb.toString());
+            helper.setText(sb.toString(), true);
 
             //发送邮件
             new Thread(() -> javaMailSender.send(message)).start();
@@ -152,5 +155,28 @@ public class UserService {
     public boolean isEmailExist(String email) {
         User user = userMapper.selectUserByEmail(email);
         return user != null;
+    }
+
+
+    /**
+     * 验证邮件
+     *
+     * @param email
+     * @param code
+     * @return
+     */
+    public CommonResult verifyMail(String email, String code) {
+        User user = userMapper.selectUserByEmail(email);
+        if (user == null) return new CommonResult(CommonEnum.Pwd_Email_NotExist);
+
+        LocalDateTime dt = LocalDateTime.now();
+        int effectNum = mailMapper.selectMailUserful(user.getId(), code, dt);
+        if (effectNum > 0) {
+            return new CommonResult(CommonEnum.Common_Success) {{
+                putData("user", user);
+            }};
+        } else {
+            return new CommonResult(CommonEnum.Pwd_Email_OutDate);
+        }
     }
 }

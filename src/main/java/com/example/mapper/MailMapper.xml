@@ -25,9 +25,27 @@
       id, uid, code, create_time, state
     </sql>
 
+    <select id="selectMailUserful" resultType="java.lang.Integer">
+        select
+        count(0)
+        from sp_mail
+        where state = 0
+        and uid = #{uid}
+        and code = #{code}
+        <![CDATA[
+        and create_time < #{time}
+        ]]>
+    </select>
+
     <insert id="insert" parameterType="com.example.model.Mail">
         insert into sp_mail(uid, code, state)
         value(#{uid}, #{code}, #{state})
     </insert>
+
+    <update id="updateState2Useless">
+        update sp_mail set state = -1
+        where state = 0
+        and uid = #{uid}
+    </update>
 
 </mapper>

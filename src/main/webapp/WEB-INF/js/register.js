@@ -48,23 +48,6 @@ var ve = new Vue({
 
         },
 
-        //弹出提示框
-        showErrorMsg: function (obj, content, invalid) {
-            invalid.val = true;
-
-            obj.popover({
-                trigger: 'manual',
-                title: 'notice',
-                placement: 'right',
-                content: content
-            });
-            obj.popover('show');
-
-            obj.unbind().bind('focus', function () {
-                obj.popover('destroy');
-            });
-        },
-
         validItem: function (category, val) {
             var obj;
             var invalid;
@@ -99,12 +82,12 @@ var ve = new Vue({
             }
 
             if (!val) {
-                this.showErrorMsg(obj, error_msg.is_null, invalid);
+                globalV.showErrorMsg(obj, error_msg.is_null, invalid);
                 return false;
             }
 
             if (!reg.test(val)) {
-                this.showErrorMsg(obj, error_msg.format_error, invalid);
+                globalV.showErrorMsg(obj, error_msg.format_error, invalid);
                 return false;
             }
 
@@ -129,11 +112,6 @@ var ve = new Vue({
                         break;
                 }
             });
-        }
-    },
-    watch: {
-        'invalid.username': function (newVal, oldVal) {
-            console.info('newVal: ' + newVal + ' oldVal: ' + oldVal);
         }
     }
 });

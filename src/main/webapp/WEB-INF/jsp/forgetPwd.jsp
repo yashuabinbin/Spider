@@ -8,32 +8,30 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css?version=${version}"/>
 </head>
 
-<body class="loginBody">
+<body class="commonBody">
 <div class="container">
     <div class="top">
     </div>
     <div class="row pwdContainer">
-        <div class="col-md-offset-4 col-md-5 loginBox">
-            <form id="loginForm">
-                <div class="text-center loginTop">
-                    FORGET PASSWORD
-                </div>
-                <div class="loginMiddle">
-                    <div class="input-group input-group-lg mt20">
+        <div class="col-md-offset-4 col-md-5 commonBox">
+            <div class="text-center commonTop">
+                FORGET PASSWORD
+            </div>
+            <div class="commonMiddle">
+                <div class="input-group input-group-lg">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-envelope"></span>
                         </span>
-                        <input type="text" class="form-control" v-model="email" placeholder="email...">
-                    </div>
+                    <input type="text" class="form-control" v-model="email" placeholder="email...">
                 </div>
-                <div class="loginBottom text-center">
-                    <button type="button" class="btn btn-default btn-block btn-large cBtn" v-on:click="sendEmail($event)">Send</button>
-                </div>
-            </form>
+            </div>
+            <div class="commonBottom shortBottom text-center">
+                <button type="button" class="btn btn-default btn-block btn-large cBtn" v-on:click="sendEmail($event)">Send</button>
+            </div>
         </div>
     </div>
 </div>
 <%@ include file="common/footer.jsp" %>
-<script type="text/javascript" src="<%=basePath%>js/pwd.js?version=${version}"></script>
+<script type="text/javascript" src="<%=basePath%>js/forgetPwd.js?version=${version}"></script>
 </body>
 </html>

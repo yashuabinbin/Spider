@@ -8,14 +8,14 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css?version=${version}"/>
 </head>
 
-<body class="loginBody">
+<body class="commonBody">
 <div class="container">
     <div class="top">
     </div>
     <div class="row loginContainer">
-        <div class="col-md-offset-4 col-md-5 loginBox">
+        <div class="col-md-offset-4 col-md-5 commonBox">
             <form id="loginForm">
-                <div class="text-center loginTop">
+                <div class="text-center commonTop">
                     SIGN IN
                 </div>
                 <div class="loginMiddle">
@@ -35,7 +35,7 @@
                                placeholder="password...">
                     </div>
                 </div>
-                <div class="loginBottom text-center">
+                <div class="commonBottom longBottom text-center">
                     <button type="button" class="btn btn-default btn-block btn-large cBtn" id="loginBtn" v-on:click="loginSubmit">LOGIN</button>
                     <div class="link">
                         <a href="<%=basePath%>register">Sign Up</a>

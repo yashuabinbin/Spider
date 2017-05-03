@@ -34,5 +34,23 @@ var globalV = new Vue({
             email: /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/,
             realname: /[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*/
         }
+    },
+    methods: {
+        //弹出提示框
+        showErrorMsg: function (obj, content, invalid) {
+            invalid.val = true;
+
+            obj.popover({
+                trigger: 'manual',
+                title: 'notice',
+                placement: 'right',
+                content: content
+            });
+            obj.popover('show');
+
+            obj.unbind().bind('focus', function () {
+                obj.popover('destroy');
+            });
+        },
     }
 });

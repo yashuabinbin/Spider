@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2017-05-02 18:21:03
+Date: 2017-05-03 17:53:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,16 +23,17 @@ CREATE TABLE `sp_mail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `code` varchar(255) NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `state` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态 0-可用，-1-不可用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sp_mail
 -- ----------------------------
-INSERT INTO `sp_mail` VALUES ('1', '1', '14bcffbef22b4bcbabca108d06809dd1', '0000-00-00 00:00:00', '0');
-INSERT INTO `sp_mail` VALUES ('2', '1', 'cf3bf735e994477da137dcc7ff2229ba', '0000-00-00 00:00:00', '0');
+INSERT INTO `sp_mail` VALUES ('5', '1', '226b5eae40cb40389e970994faf40c28', '2017-05-03 16:40:31', '0');
+INSERT INTO `sp_mail` VALUES ('6', '1', '5b2a3761aea34d2ca3c72dde80110d75', '2017-05-03 16:43:24', '0');
+INSERT INTO `sp_mail` VALUES ('7', '1', '9376fdfacf124c1bbb76da9561dde73b', '2017-05-03 17:07:22', '0');
 
 -- ----------------------------
 -- Table structure for sp_seed
