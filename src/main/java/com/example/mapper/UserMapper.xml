@@ -55,4 +55,10 @@
       values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
         #{realname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{updateTime,jdbcType=TIMESTAMP})
     </insert>
+
+    <update id="updatePassword">
+        update sp_user
+        set password = #{password}
+        where id = #{id}
+    </update>
 </mapper>

@@ -36,6 +36,11 @@ public class CommonResult {
         this.stateInfo = commonEnum.getStateInfo();
     }
 
+    public CommonResult(CommonEnum commonEnum, String msg) {
+        this.state = commonEnum.getState();
+        this.stateInfo = msg;
+    }
+
 
     /**
      * 放入返回对象

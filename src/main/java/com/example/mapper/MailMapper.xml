@@ -33,7 +33,7 @@
         and uid = #{uid}
         and code = #{code}
         <![CDATA[
-        and create_time < #{time}
+        and create_time > #{time}
         ]]>
     </select>
 
@@ -43,7 +43,8 @@
     </insert>
 
     <update id="updateState2Useless">
-        update sp_mail set state = -1
+        update sp_mail
+        set state = -1
         where state = 0
         and uid = #{uid}
     </update>

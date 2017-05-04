@@ -28,7 +28,7 @@
     padding: 0px 30px 30px 30px;
 }
 
-.commonBox .commonMiddle div {
+.commonBox .commonMiddle .input-group:not(:first-child) {
     margin-top: 15px;
 }
 

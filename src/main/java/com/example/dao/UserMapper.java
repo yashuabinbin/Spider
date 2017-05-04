@@ -20,4 +20,6 @@ public interface UserMapper {
     User selectUserByEmail(@Param("email") String email);
 
     void insertUser(User user);
+
+    void updatePassword(@Param("id") Integer id, @Param("password") String password);
 }

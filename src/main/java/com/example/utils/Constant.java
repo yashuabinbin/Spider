@@ -11,6 +11,8 @@ public class Constant {
 
     public static final String LOGINED_USER = "LOGINED_USER";
 
+    public static final String RESET_PWD_USER = "RESET_PWD_USER";
+
     /**
      * 未登录代号(用于返回AJAX请求)
      */

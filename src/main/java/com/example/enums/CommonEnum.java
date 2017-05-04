@@ -16,7 +16,10 @@ public enum CommonEnum {
     Register_Email_Exist(-5, "邮箱已存在"),
 
     Pwd_Email_NotExist(-6, "该邮箱未注册"),
-    Pwd_Email_OutDate(-7, "邮件过期");
+    Pwd_Email_OutDate(-7, "邮件过期"),
+
+    ResetPwd_Fail(-8, "修改密码出错,请点击邮件链接重试"),
+    ResetPwd_Success(8, "修改密码成功,将跳转到登录界面");
 
     private int state;
 

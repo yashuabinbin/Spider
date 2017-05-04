@@ -7,6 +7,7 @@ import com.example.enums.CommonEnum;
 import com.example.model.Mail;
 import com.example.model.User;
 import com.example.utils.Constant;
+import com.example.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import javax.mail.internet.MimeMessage;
@@ -119,7 +121,7 @@ public class UserService {
 
             //拼凑文件内容
             StringBuffer sb = new StringBuffer();
-            sb.append("本邮件用于密码的找回，请勿回复<br/>");
+            sb.append("本邮件用于密码的找回，请勿回复 ");
             sb.append("<a href=\"" + url + "\">点击我进入重设密码页面</a><br/>");
             sb.append("本邮件超过30分钟，链接将会失效，需要重新申请！");
             helper.setText(sb.toString(), true);
@@ -166,11 +168,13 @@ public class UserService {
      * @return
      */
     public CommonResult verifyMail(String email, String code) {
+        //检查该邮箱对应的用户对象是否存在
         User user = userMapper.selectUserByEmail(email);
         if (user == null) return new CommonResult(CommonEnum.Pwd_Email_NotExist);
 
-        LocalDateTime dt = LocalDateTime.now();
-        int effectNum = mailMapper.selectMailUserful(user.getId(), code, dt);
+        //查询mail表看该链接是否有效
+        LocalDateTime dt = LocalDateTime.now().plusMinutes(-30);
+        int effectNum = mailMapper.selectMailUserful(user.getId(), code, dt);//DateUtils.convert2Date(dt)
         if (effectNum > 0) {
             return new CommonResult(CommonEnum.Common_Success) {{
                 putData("user", user);
@@ -178,5 +182,21 @@ public class UserService {
         } else {
             return new CommonResult(CommonEnum.Pwd_Email_OutDate);
         }
+    }
+
+
+    /**
+     * 重置密码
+     *
+     * @param user
+     * @param password
+     */
+    @Transactional
+    public void resetPassword(User user, String password) {
+        //重置密码
+        userMapper.updatePassword(user.getId(), DigestUtils.md5DigestAsHex(password.getBytes()));
+
+        //将邮件无效化
+        mailMapper.updateState2Useless(user.getId());
     }
 }

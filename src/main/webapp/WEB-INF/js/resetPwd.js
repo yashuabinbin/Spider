@@ -5,7 +5,7 @@ var ve = new Vue({
         confirmPassword: '',
         invalid: {
             password: {
-                val: false,
+                val: false
             },
             confirmPassword: {
                 val: false
@@ -45,6 +45,26 @@ var ve = new Vue({
             this.invalid.confirmPassword = false;
 
             //重置密码
+            $.ajax({
+                type: 'POST',
+                url: basePath + 'user/resetPwd',
+                data: {
+                    password: this.password
+                },
+                dataType: 'json',
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert('修改密码出错');
+                },
+                success: function (data) {
+                    if (data.state == -999) {
+                        alert(data.stateInfo);
+                        return;
+                    } else {
+                        alert(data.stateInfo);
+                        window.location.href = basePath + 'login';
+                    }
+                }
+            });
         }
     }
 });

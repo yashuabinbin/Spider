@@ -63,6 +63,8 @@ public class LoginFilter implements Filter {
         this.add("/forgetPwd");
         this.add("/sendPwdEmail");
         this.add("/toResetPwd");
+        this.add("/resetPwd");
+        this.add("/error");
     }};
 
 

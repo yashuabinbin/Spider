@@ -8,7 +8,7 @@ var ve = new Vue({
         loginSubmit: function () {
             $.ajax({
                 type: 'POST',
-                url: basePath + '/checkLogin',
+                url: basePath + 'checkLogin',
                 dataType: 'json',
                 data: {
                     username: this.username,

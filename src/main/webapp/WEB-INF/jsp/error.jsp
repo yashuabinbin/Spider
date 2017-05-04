@@ -8,13 +8,13 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>css/login.css?version=${version}"/>
 </head>
 
-<body class="loginBody">
+<body class="commonBody">
 <div class="container">
     <div class="top">
     </div>
-    <div class="row pwdContainer">
-        <div class="col-md-offset-4 col-md-5 loginBox">
-            <div class="text-center loginTop">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-5 commonBox">
+            <div class="text-center commonTop">
                 ${errorMsg}
             </div>
         </div>

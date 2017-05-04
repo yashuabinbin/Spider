@@ -4,6 +4,7 @@ import com.example.dto.CommonResult;
 import com.example.enums.CommonEnum;
 import com.example.model.User;
 import com.example.service.UserService;
+import com.example.utils.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,7 @@ public class UserController {
 
     /**
      * 发送重置密码邮件
+     *
      * @param email
      * @return
      */
@@ -80,14 +82,37 @@ public class UserController {
     @GetMapping(value = "/{email}/toResetPwd")
     public String toResetPwd(@PathVariable(value = "email", required = true) String email,
                              @RequestParam(value = "code", required = true) String code,
-                             Model model) {
+                             HttpSession session, Model model) {
+        //验证重制密码链接是否正确
         CommonResult result = userService.verifyMail(email, code);
         if (result.isSuccess()) {
-            model.addAttribute("user", result.getData("user"));
+            //将用户放入session中
+            session.setAttribute(Constant.RESET_PWD_USER, result.getData("user"));
             return "resetPwd";
         } else {
             model.addAttribute("errorMsg", result.getStateInfo());
             return "error";
         }
+    }
+
+
+    /**
+     * 重置密码
+     *
+     * @param password
+     * @param session
+     * @return
+     */
+    @PostMapping(value = "/resetPwd")
+    @ResponseBody
+    public CommonResult resetPwd(@RequestParam(value = "password", required = true) String password,
+                                 HttpSession session) {
+        User user = (User) session.getAttribute(Constant.RESET_PWD_USER);
+        if (user == null) {
+            return new CommonResult(CommonEnum.ResetPwd_Fail);
+        }
+
+        userService.resetPassword(user, password);
+        return new CommonResult(CommonEnum.ResetPwd_Success);
     }
 }
